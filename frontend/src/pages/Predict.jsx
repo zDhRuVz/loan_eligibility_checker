@@ -77,10 +77,8 @@ export default function Predict() {
     }
 
     try {
-      const BASE_URL = import.meta.env.VITE_API_URL;
-      if (!BASE_URL) {
-        throw new Error("API configuration error: VITE_API_URL is not defined.");
-      }
+      const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+      // No need to throw error now as we have a safe fallback
       const API_URL = `${BASE_URL}/predict`;
       
       const response = await fetch(API_URL, {
