@@ -1,0 +1,11 @@
+{
+  "name": "loan-system",
+  "private": true,
+  "scripts": {
+    "frontend-dev": "npm run dev --workspace=frontend",
+    "frontend-build": "npm run build --workspace=frontend"
+  },
+  "workspaces": [
+    "frontend"
+  ]
+}
