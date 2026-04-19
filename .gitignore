@@ -1,0 +1,19 @@
+# Frontend
+node_modules/
+dist/
+.env
+.env.local
+
+# Backend
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+.pytest_cache/
+venv/
+.venv/
+
+# General
+.DS_Store
+.vscode/
+.idea/
