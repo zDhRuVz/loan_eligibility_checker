@@ -77,8 +77,9 @@ export default function Predict() {
     }
 
     try {
-      const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
-      // No need to throw error now as we have a safe fallback
+      let BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+      // Safety: Remove trailing slash if present to avoid //predict
+      BASE_URL = BASE_URL.replace(/\/$/, "");
       const API_URL = `${BASE_URL}/predict`;
       
       const response = await fetch(API_URL, {
