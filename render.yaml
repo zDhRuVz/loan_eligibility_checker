@@ -2,12 +2,11 @@ services:
   - type: web
     name: loan-prediction-backend
     runtime: python
-    rootDir: backend
+    # We run from the root now, using the root app.py as the entry point
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT
-    autoDeploy: true
     envVars:
       - key: ALLOWED_ORIGINS
-        value: "*" # Default to allow all; change to your Vercel URL in Render dashboard for better security.
+        value: "*"
       - key: PYTHON_VERSION
         value: 3.11.0
