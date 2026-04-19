@@ -12,9 +12,11 @@ print(f"DEBUG: sys.version: {sys.version}")
 # Initialize FastAPI app
 app = FastAPI(title="Loan Default Risk Prediction API")
 
-# Setup CORS using environment variable
-allowed_origins_str = os.getenv("ALLOWED_ORIGINS", "*")
-allowed_origins = [origin.strip() for origin in allowed_origins_str.split(",")]
+# Setup CORS using environment variable (default to * if empty or missing)
+allowed_origins_str = os.getenv("ALLOWED_ORIGINS") or "*"
+allowed_origins = [origin.strip() for origin in allowed_origins_str.split(",") if origin.strip()]
+if not allowed_origins:
+    allowed_origins = ["*"]
 print(f"DEBUG: Setting allowed origins to: {allowed_origins}")
 
 app.add_middleware(
